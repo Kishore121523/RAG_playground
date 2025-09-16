@@ -220,11 +220,6 @@ with gr.Blocks(css=custom_css, title="RAG Playground") as demo:
                 outputs=logs_output
             )
 
-        # Add a new tab for technique comparison (future feature)
-        with gr.TabItem("📊 Technique Comparison"):
-            gr.Markdown("### RAG Technique Comparison")
-            gr.Markdown("*Coming soon: Side-by-side comparison of different RAG techniques*")
-
 if __name__ == "__main__":
     demo.launch(
         server_name="127.0.0.1", 
