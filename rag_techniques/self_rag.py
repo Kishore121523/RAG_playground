@@ -6,10 +6,10 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.runnables import RunnablePassthrough
-from langchain_core.pydantic_v1 import BaseModel, Field
+from pydantic import BaseModel, Field
 
 class SelfRAG:
     def __init__(self):
@@ -33,7 +33,7 @@ class SelfRAG:
         for dataset in datasets:
             try:
                 import chromadb
-                from langchain.schema import Document
+                from langchain_core.documents import Document
                 
                 chroma_client = chromadb.PersistentClient(path=self._get_chroma_db_path())
                 collection = chroma_client.get_collection(dataset)

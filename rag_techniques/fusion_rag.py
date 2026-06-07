@@ -6,9 +6,9 @@ load_dotenv()
 os.environ["OPENAI_API_KEY"] = os.getenv("OPENAI_API_KEY")
 
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
-from langchain.prompts import ChatPromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
-from langchain.load import dumps, loads
+from langchain_core.load import dumps, loads
 
 class FusionRAG:
     def __init__(self):
@@ -33,7 +33,7 @@ class FusionRAG:
         for dataset in datasets:
             try:
                 import chromadb
-                from langchain.schema import Document
+                from langchain_core.documents import Document
                 
                 chroma_client = chromadb.PersistentClient(path=self._get_chroma_db_path())
                 collection = chroma_client.get_collection(dataset)

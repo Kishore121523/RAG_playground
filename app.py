@@ -124,7 +124,7 @@ custom_css = """
 }
 """
 
-with gr.Blocks(css=custom_css, title="RAG Playground") as demo:
+with gr.Blocks(title="RAG Playground") as demo:
     session_id = gr.State(str(uuid.uuid4()))
     
     with gr.Tabs():
@@ -139,7 +139,6 @@ with gr.Blocks(css=custom_css, title="RAG Playground") as demo:
                     chatbot = gr.Chatbot(
                         [], 
                         height=500, 
-                        show_copy_button=True, 
                         label="RAG Response",
                         avatar_images=None
                     )
@@ -226,5 +225,6 @@ if __name__ == "__main__":
         server_port=7861, 
         share=False, 
         inbrowser=True,
-        show_error=True
+        show_error=True,
+        css=custom_css
     )
